@@ -1,0 +1,20 @@
+<?php return [
+    'plugin' => [
+        'name' => 'Youtube rss reader',
+        'description' => 'Youtube user, channel and playlist player and list.',
+    ],
+    'feedType'          => 'Rss source',
+    'feedTypeDesc'      => 'Where is the username, channel ID, or playlist',
+    'youtubeID'         => 'Type id value',
+    'youtubeIDDesc'     => 'User name, channel id or playlist id value',
+    'autoPlayers'       => 'Auto player',
+    'playerWidth'       => 'Player width',
+    'playerHeight'      => 'Player height',
+    'putCss'            => 'Include example style',
+    'thumbWidth'        => 'Thumb width',
+    'thumbHeight'       => 'Thumb height',
+    'Ytplaylist'        => 'Youtube Player list',
+    'YtplaylistDesc'    => 'Youtube left video right list',
+    'Ytlist'            => 'Youtube thumb list',
+    'YtlistDesc'        => 'Youtube thumb list a tag in data attribute listing',
+];

@@ -1,0 +1,40 @@
+{% if __SELF__.data %}
+
+{% if __SELF__.putCss %}
+{% put styles %}
+<style>
+    .ytChannelList{
+        display: block;
+        margin-bottom:15px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        background-color: #FFFFFF;
+        border: 1px solid #D1D1D1;
+    }
+    .ytChannelList img{
+        float: left;
+        margin-right: 15px;
+        width: {{ __SELF__.thumbWidth }}px;
+        height: {{ __SELF__.thumbHeight }}px;
+    }
+    .ytChannelList h3{
+        font-size: 14px;
+        margin: 0;
+        padding: 0;
+    }
+</style>
+{% endput %}
+{% endif %}
+
+    {% set items = __SELF__.data %}
+    {% set x = 0 %}
+    {% for item in items %}
+        <div class="row ytChannelList">
+            <div class="col-xs-12">
+                <a href="{{ item.url }}" data-href="{{ item.embed }}" data-v="{{ item.v }}"><img src="{{ item.image }}" class="img-responsive" alt="Video"></a>
+                <h3 data-href="{{ item.embed }}" data-v="{{ item.v }}"><a href="{{ item.url }}" data-href="{{ item.embed }}" data-v="{{ item.v }}">{{ item.title }}</a></h3>
+            </div>
+        </div>           
+        {% set x = x + 1 %}
+    {% endfor %}
+{% endif %}

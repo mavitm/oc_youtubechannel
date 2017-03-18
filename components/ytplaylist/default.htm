@@ -1,0 +1,73 @@
+{% if __SELF__.data %}
+
+{% if __SELF__.putCss %}
+{% put styles %}
+<style>
+    .playerArea{
+        display: block;
+        margin-bottom:15px;
+        background-color: #000000;
+    }
+    .playerListArea{
+        position: relative;
+        height: {{ __SELF__.playerHeight }}px;
+        overflow: auto;
+    }
+    .playerListItem{
+        display: block;
+        height: {{ __SELF__.thumbHeight }}px;
+        border-bottom:1px solid #CCCCCC;
+    }
+    .playerListItem img{
+        float: left;
+        margin-right: 15px;
+        width: {{ __SELF__.thumbWidth }}px;
+        height: {{ __SELF__.thumbHeight }}px;
+    }
+    .playerListItem h3{
+        font-size: 14px;
+        margin: 0;
+        padding: 15px 0;
+    }
+    .playerListItem h3 a{
+        color: #CCCCCC;
+    }
+</style>
+{% endput %}
+{% endif %}
+
+    {% set items = __SELF__.data %}
+    {% set x = 0 %}
+    <div class="playerArea">
+        <div class="row">
+            <div class="col-sm-8" id="{{ __SELF__ }}">
+                {{ __SELF__.firstEmbed|raw }}
+            </div>
+            <div class="col-sm-4">
+                <div class="playerListArea">
+                {% for item in items %}
+                    <div class="playerListItem">
+                        <a href="{{ item.url }}" data-href="{{ item.autoEmbed }}" data-target="#{{ __SELF__ }}" data-v="{{ item.v }}"><img src="{{ item.image }}" class="img-responsive" alt="Video"></a>
+                        <h3 data-href="{{ item.autoEmbed }}" data-v="{{ item.v }}"><a href="{{ item.url }}" data-target="#{{ __SELF__ }}" data-href="{{ item.autoEmbed }}" data-v="{{ item.v }}">{{ item.title }}</a></h3>
+                    </div>
+                {% set x = x + 1 %}
+                {% endfor %}
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+{% endif %}
+
+{% put scripts %}
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".playerListItem a").click(function(){
+            var target = $(this).data("target");
+            $("iframe", target).attr("src", $(this).data("href"));
+            return false;
+        });
+    });
+</script>
+{% endput %}
