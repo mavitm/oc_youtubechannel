@@ -1,4 +1,4 @@
-# Octobercms Youtube rrs reader plugin
+# Octobercms for Youtube rrs reader plugin
 Youtube channel, user and play list rss reader
 
 
